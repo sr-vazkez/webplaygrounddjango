@@ -5,7 +5,7 @@
 {% include 'pages/includes/pages_menu.html' %}
 <main role="main">
   <div class="container mb-4">
-    {% for page in page_list %}
+    {% for page in page_list|dictsort:"id" reverse%}
       <div class="row mt-3">
         <div class="col-md-9 mx-auto">
           <h2 class="mb-4">{{page.title}}</h2>
