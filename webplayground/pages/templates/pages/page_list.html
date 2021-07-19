@@ -2,10 +2,10 @@
 {% load static %}
 {% block title %}Páginas{% endblock %}
 {% block content %}
-{% include 'pages/includes/pages_menu.html' %}
+{% include 'pages/include/pages_menu.html' %}
 <main role="main">
   <div class="container mb-4">
-    {% for page in page_list|dictsort:"id" reverse%}
+    {% for page in page_list|dictsort:"id" reversed%}
       <div class="row mt-3">
         <div class="col-md-9 mx-auto">
           <h2 class="mb-4">{{page.title}}</h2>
@@ -14,8 +14,8 @@
             <p><a href="{% url 'pages:page' page.id page.title|slugify %}">Leer más</a>
               
               {% if request.user.is_staff %}
-                | <a href="{% url 'pages:page' page.id %}">leer mas</a>
-              <!--  | <a href="#">Borrar</a>-->
+                | <a href="{% url 'pages:update' page.id %}">leer mas</a>
+                | <a href="{% url 'pages:delete' page.id %}">Borrar</a>
               {% endif %}
               
             </p>
