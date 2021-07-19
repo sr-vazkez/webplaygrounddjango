@@ -14,14 +14,19 @@ class PageDetailView(DetailView):
 class PageCreate(CreateView):
     model = Page
     fields = ['title', 'content', 'order']
-    succes_url = reverse_lazy('pages:pages')
+    success_url = reverse_lazy('pages:pages')
 
 class PageUpdate(UpdateView):
     model = Page
     fields = ['title', 'content', 'order']
     template_name_suffix = '_update_form'
-    succes_url = reverse_lazy('pages:pages')
+    success_url = reverse_lazy('pages:pages')
     def get_success_url(self):
         return reverse_lazy('pages:update', args=[self.object.id])
 
+class PageDelete(DeleteView):
+    model = Page
+    success_url = reverse_lazy('pages:pages')
+
+        
     
