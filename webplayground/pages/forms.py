@@ -9,7 +9,10 @@ class PageForm(forms.ModelForm):
           model = Page
           fields = ['title','content','order']
           widgets = {
-          'title': forms.TextInput(attrs={'class':'form-control'}),
+          'title': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Titulo'}),
           'content': forms.TextArea(attrs={'class':'form-control'}),
-          'order': forms.TextNumber(attrs={'class':'form-control'}),
+          'order': forms.TextNumber(attrs={'class':'form-control', 'placeholder':'Orden'}),
+          }
+          labels = {
+          'title':'','content':'','order':'',
           }
