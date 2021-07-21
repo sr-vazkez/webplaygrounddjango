@@ -16,6 +16,9 @@ class PageCreate(CreateView):
     model = Page
     form_class = PageForm
     success_url = reverse_lazy('pages:pages')
+    def dispatch(self, request, *args, **kwargs):
+        print(request.user)
+        return super(PageCreate, self).dispatch(request, *args, **kwargs)
 
 class PageUpdate(UpdateView):
     model = Page
