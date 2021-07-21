@@ -17,7 +17,8 @@ class PageCreate(CreateView):
     form_class = PageForm
     success_url = reverse_lazy('pages:pages')
     def dispatch(self, request, *args, **kwargs):
-        print(request.user)
+        if not request.user.is_staff:
+            return redirect(reverse_lazy('admin:login'))
         return super(PageCreate, self).dispatch(request, *args, **kwargs)
 
 class PageUpdate(UpdateView):
