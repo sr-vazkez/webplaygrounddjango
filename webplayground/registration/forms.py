@@ -9,3 +9,8 @@ class UserCreationFormWhitEmail(UserCreationForm):
           model = User
           fields = ("username", "email", "password1", "password2")
           
+     def cleam_email(self)
+          email = self.cleaned_data.get("email")
+          if User.objects.filter(email=email).exists():
+               raise forms.ValidationError("El email ya fue registrado, usa otro :p")
+          return email
