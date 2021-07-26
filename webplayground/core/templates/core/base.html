@@ -32,18 +32,16 @@
               </li>
             </ul>
             <ul class="navbar-nav"> 
-              
               {% if not request.user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">  Acceder </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'signup' %}">  Registro </a>
+              </li>
+          {% else %}
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'login' %}">
-                    Acceder
-                  </a>
-                </li>
-              {% else %}
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'logout' %}">
-                    Salir
-                  </a> 
+                  <a class="nav-link" href="{% url 'logout' %}"> Salir </a> 
                 </li>
               {% endif %}
                                
