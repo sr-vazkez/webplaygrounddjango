@@ -29,3 +29,20 @@ class ProfileForm(forms.ModelForm):
             'bio': forms.Textarea(attrs={'class': 'form-control-file mt-3', 'rows': 3, 'placeholder': 'Biografia'}),
             'link': forms.URLInput(attrs={'class': 'form-control-file mt-3', 'placeholder': 'Enlace'}),
         }
+
+
+class EmailForm(forms.ModelForm):
+    email = forms.EmailField(
+        required=True, help_text="Campo obligatorio, 254 caracteres como maximo que debe ser valido")
+
+    class Meta:
+        model = User
+        fields = ['email']
+
+    def cleam_email(self):
+        email = self.cleaned_data.get("email")
+        if 'email' in self.changed_data:
+            if User.objects.filter(email=email).exists():
+                raise forms.ValidationError(
+                    "El email ya fue registrado, usa otro :p")
+        return email
