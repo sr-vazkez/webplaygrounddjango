@@ -1,6 +1,5 @@
 from django import forms
 from django.forms import widgets
-
 from .models import Page
 
 class PageForm(forms.ModelForm):
@@ -9,10 +8,10 @@ class PageForm(forms.ModelForm):
           model = Page
           fields = ['title','content','order']
           widgets = {
-          'title': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Titulo'}),
-          'content': forms.TextArea(attrs={'class':'form-control'}),
-          'order': forms.TextNumber(attrs={'class':'form-control', 'placeholder':'Orden'}),
+               'title': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Titulo'}),
+               'content': forms.Textarea(attrs={'class':'form-control'}),
+               'order': forms.NumberInput(attrs={'class':'form-control', 'placeholder':'Orden'}),
           }
           labels = {
-          'title':'','content':'','order':'',
+               'title':'','order':'','content':'',
           }
