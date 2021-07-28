@@ -127,11 +127,11 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-#AUT REDIRECT 
+# AUT REDIRECT
 LOGIN_REDIRECT_URL = 'pages:pages'
-LOGOUT_REDIRECT_URL = 'home' 
+LOGOUT_REDIRECT_URL = 'home'
 
-#EMAILS
+# EMAILS
 
 if DEBUG:
     EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
@@ -139,3 +139,6 @@ if DEBUG:
 else:
     # Se debe configurar un email real para produccion
     pass
+# MEDIA files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
