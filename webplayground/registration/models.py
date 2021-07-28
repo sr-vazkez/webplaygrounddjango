@@ -14,5 +14,6 @@ class Profile(models.Model):
 
 @receiver(post_save, sender=User)
 def ensure_profile_exists(sender, instance, **kwargs):
-    Profile.objects.get_or_create(user=instance)
-    print("Se acaba de crea un user y perfil")
+    if kwargs.get('created', False):
+        Profile.objects.get_or_create(user=instance)
+        print("Se acaba de crea un user y perfil")
