@@ -39,4 +39,6 @@ class ProfileUpdate(UpdateView):
 
     def get_object(self):
         # Recuperar el objeto que se va a Editar
-        return Profile.objects.get(users=self.request.user)
+        profile, created = Profile.objects.get_or_create(
+            users=self.request.user)
+        return profile
