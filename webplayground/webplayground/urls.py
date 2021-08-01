@@ -26,7 +26,7 @@ urlpatterns = [
     # Ruta de auth
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('registration.urls')),
-    path('profiles/', include(profiles_patterns)),
+    path('profiles/', include('profiles_patterns')),
 ]
 if settings.DEBUG:
     from django.conf.urls.static import static
